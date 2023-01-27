@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                msg.teste( "Parent >>> "+parent+"\nPosition >>> "+position+"\nLong >>> "+id);
+                abrirTelaEditar();
             }
         });
     }
@@ -73,5 +73,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
         Intent it_TelaCriar = new Intent(this, TelaCriar.class);
         startActivity(it_TelaCriar);
+        this.finish();
+    }
+    public void abrirTelaEditar(){
+        Intent it_TelaEditar = new Intent(this, TelaEditar.class);
+        startActivity(it_TelaEditar);
+        this.finish();
     }
 }

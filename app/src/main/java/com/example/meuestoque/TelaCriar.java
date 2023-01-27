@@ -24,13 +24,13 @@ public class TelaCriar extends AppCompatActivity {
 
         // Relaciona elementos da tela as variaveis
         //EditText -> elementos de imput de texto
-        et_nomeProduto = findViewById(R.id.et_nomeProduto);
-        et_valorPoduto = findViewById(R.id.et_valorProduto);
-        et_totalProduto = findViewById(R.id.et_totalProduto);
-        et_minimProduto = findViewById(R.id.et_minimProduto);
+        et_nomeProduto = findViewById(R.id.et_edit_nomeProduto);
+        et_valorPoduto = findViewById(R.id.et_edit_valorProduto);
+        et_totalProduto = findViewById(R.id.et_edit_totalProduto);
+        et_minimProduto = findViewById(R.id.et_edit_minimProduto);
 
         //Button
-        btn_salvar = findViewById(R.id.btn_salvar);
+        btn_salvar = findViewById(R.id.btn_editar);
 
         // Chama uma fução que cadastra um produto no banco de dados
         btn_salvar.setOnClickListener(new View.OnClickListener() {

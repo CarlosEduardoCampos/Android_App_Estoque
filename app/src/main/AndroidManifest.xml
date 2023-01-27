@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MeuEstoque"
         tools:targetApi="31">
         <activity
+            android:name=".TelaEditar"
+            android:exported="false" />
+        <activity
             android:name=".TelaCriar"
             android:exported="false" />
         <activity

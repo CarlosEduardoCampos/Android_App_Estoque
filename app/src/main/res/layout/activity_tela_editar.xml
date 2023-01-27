@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaCriar">
+    tools:context=".TelaEditar">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,18 +21,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/bnt_criarProduto"
+                android:text="@string/bnt_editarProduto"
                 android:textAlignment="center"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/txt_nomeProduto"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_width="match_parent"/>
 
             <EditText
                 android:id="@+id/et_edit_nomeProduto"
@@ -111,11 +111,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:backgroundTint="#56CF4D"
-                android:text="@string/btn_salvar"
-                android:textSize="20sp"
+                android:onClick="editarProduto"
+                android:text="@string/btn_editar"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_deletar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="#BD0521"
+                android:onClick="deletarProduto"
+                android:text="@string/btn_deletar"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
-
 </android.support.constraint.ConstraintLayout>
