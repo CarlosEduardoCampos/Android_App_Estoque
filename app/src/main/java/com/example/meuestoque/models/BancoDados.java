@@ -21,9 +21,15 @@ public class BancoDados {
 
     // Executa no banco de dados um insert
     public void inserir(String txt){
-        abrirDB();
-        db.execSQL("INSERT INTO "+ txt);
-        fecharDB();
+        try {
+            abrirDB();
+            db.execSQL("INSERT INTO "+ txt);
+            fecharDB();
+        }
+        catch (Exception ex){
+            CxMsg.erroExecucao(act, "Erro ao cadastrar novo produto", ex);
+        }
+
     }
 
     // Executa no banco de dados um update
@@ -53,7 +59,6 @@ public class BancoDados {
     // Fecha o acesso ao banco de dados
     public void fecharDB(){
         db.close();
-        Toast.makeText(act, "Banco de dados esta deligado", Toast.LENGTH_SHORT).show();
     }
 
     // Executa um create table no banco de dados

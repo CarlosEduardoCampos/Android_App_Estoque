@@ -84,11 +84,11 @@ public class Produtos {
         try {
             bancoDados.abrirTabela(
                 TITULO_TABELA + "(" +
-                        COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        COLUNA_NOME + " TEXT," +
-                        COLUNA_VALOR + " DOUBLE" +
-                        COLUNA_QUANTIDADE_TOTAL + " INTEGER" +
-                        COLUNA_QUANTIDADE_MINIMA + " INTEGER" +
+                        COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUNA_NOME + " TEXT, " +
+                        COLUNA_VALOR + " DOUBLE, " +
+                        COLUNA_QUANTIDADE_TOTAL + " INTEGER, " +
+                        COLUNA_QUANTIDADE_MINIMA + " INTEGER " +
                 ");"
             );
         }
@@ -116,13 +116,13 @@ public class Produtos {
                             COLUNA_NOME + ", " +
                             COLUNA_VALOR + ", " +
                             COLUNA_QUANTIDADE_TOTAL + ", " +
-                            COLUNA_QUANTIDADE_MINIMA + ", " +
+                            COLUNA_QUANTIDADE_MINIMA +
                             ") VALUES('" +
-                            nomeProduto + "', '" +
-                            valorProduto + "', '" +
-                            quantidadeTotal + "', '" +
+                            nomeProduto + "', " +
+                            valorProduto + ", " +
+                            quantidadeTotal + ", " +
                             quantidadeMinima +
-                            "');"
+                            ");"
             );
         }
         catch (Exception ex) {
@@ -188,6 +188,7 @@ public class Produtos {
                 new String[]{
                         COLUNA_ID,
                         COLUNA_NOME,
+                        COLUNA_VALOR,
                         COLUNA_QUANTIDADE_TOTAL,
                         COLUNA_QUANTIDADE_MINIMA
                 });

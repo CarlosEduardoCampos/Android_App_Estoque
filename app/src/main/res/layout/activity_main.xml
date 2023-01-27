@@ -12,9 +12,34 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_criar"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#56CF4D"
+            android:onClick="abrirTelaCriar"
+            android:text="@string/bnt_criarProduto"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/titulo_listaProduto"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold|italic" />
+
+        <ListView
+            android:id="@+id/lista_produtos"
+            style="@style/Widget.AppCompat.ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:scrollbarStyle="outsideOverlay" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

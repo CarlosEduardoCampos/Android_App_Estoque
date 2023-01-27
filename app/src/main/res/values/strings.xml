@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Meu Estoque</string>
+    <string name="bnt_criarProduto">NOVO PRODUTO</string>
+    <string name="btn_salvar">SALVAR</string>
+    <string name="titulo_listaProduto">LISTA DE PRODUTOS</string>
+    <string name="txt_nomeProduto">Nome do Produto:</string>
+    <string name="txt_valorProduto">Valor do Produto:</string>
+    <string name="txt_totalProduto">Quantidade Atual:</string>
+    <string name="txt_minimProduto">Quantidade Mininima:</string>
+    <string name="txt_dig_nome">Produto</string>
+    <string name="txt_dig_preco">0.0</string>
+    <string name="txt_dig_quat">0</string>
 </resources>
