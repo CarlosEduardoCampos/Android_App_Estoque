@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class Produtos {
 
@@ -95,9 +97,6 @@ public class Produtos {
         catch (Exception ex){
             CxMsg.erroExecucao(activity, "Erro ao tentar criar tabela", ex);
         }
-        finally {
-            Toast.makeText(activity,"Tabela contatos criada com sucesso", Toast.LENGTH_SHORT).show();
-        }
     }
 
     // Cadastra um nono contato na agenda
@@ -181,16 +180,49 @@ public class Produtos {
     }
 
     // Realiza uma busca de todos os contatos no banco de dados
-    public Cursor buscarTodos(){
+    public ArrayList<Produtos> buscarTodos(){
         bancoDados.abrirDB();
-        return bancoDados.buscarDados(
-                TITULO_TABELA,
-                new String[]{
-                        COLUNA_ID,
-                        COLUNA_NOME,
-                        COLUNA_VALOR,
-                        COLUNA_QUANTIDADE_TOTAL,
-                        COLUNA_QUANTIDADE_MINIMA
-                });
+            ArrayList<Produtos> lista_produtos = new ArrayList<>();
+
+            // Busca tosdos os produtos
+            Cursor ponteiro = bancoDados.buscarDados(
+                    TITULO_TABELA,
+                    new String[]{
+                            COLUNA_ID,
+                            COLUNA_NOME,
+                            COLUNA_VALOR,
+                            COLUNA_QUANTIDADE_TOTAL,
+                            COLUNA_QUANTIDADE_MINIMA
+                    });
+
+            // Testa se foi encontrado um produto
+            if(ponteiro != null){
+                if(ponteiro.getCount() != 0) {
+                    // Transfere de Cursor para ArrayList<>
+                    int cont = 0;
+                    do {
+                        Produtos temp_produto = new Produtos(activity, bancoDados);
+                        if (cont == 0) {
+                            ponteiro.moveToFirst();
+                            cont++;
+                        }
+
+                        temp_produto.setCodProduto(ponteiro.getInt(0));
+                        temp_produto.setNomeProduto(ponteiro.getString(1));
+                        temp_produto.setValorProduto(ponteiro.getDouble(2));
+                        temp_produto.setQuantidadeTotal(ponteiro.getInt(3));
+                        temp_produto.setQuantidadeMinima(ponteiro.getInt(4));
+
+                        lista_produtos.add(temp_produto);
+
+                    } while (ponteiro.moveToNext());
+                    ponteiro.close();
+                }
+            }
+            else{
+                CxMsg.erro(activity, "Não foi encontrado nem um produto");
+            }
+        bancoDados.fecharDB();
+        return lista_produtos;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.meuestoque;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,7 @@ public class TelaCriar extends AppCompatActivity {
                 // cadatra um novo produto
                 produtos.inserir();
                 limparTela();
+                finalizarTela();
             }
         });
     }
@@ -54,6 +56,13 @@ public class TelaCriar extends AppCompatActivity {
         et_valorPoduto.setText("");
         et_totalProduto.setText("");
         et_minimProduto.setText("");
+    }
+
+    // Volta para a tela anterior matando a tela atual
+    public void finalizarTela(){
+        Intent it_main = new Intent(this, MainActivity.class);
+        startActivity(it_main);
+        this.finish();
     }
 }
 

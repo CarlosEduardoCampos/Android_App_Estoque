@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listaProdutos;
     private final CxMsg msg = new CxMsg(this);
-    private final ArrayList<Produtos> lista_produtos = new ArrayList<>();
+    public static ArrayList<Produtos> lista_produtos = new ArrayList<>();
     private final BancoDados db = new BancoDados(this);
     private final Produtos produto = new Produtos(this, db);
 
@@ -32,30 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Inicia o Banco de dados
-        //produtos.deletarTabela();
+        //produto.deletarTabela();
         produto.criarTabela();
 
         //busca produtos no banco
-        Cursor ponteiro = produto.buscarTodos();
-
-        if(ponteiro != null){
-            ponteiro.moveToFirst();
-            do{
-
-                produto.setCodProduto(ponteiro.getInt(0));
-                produto.setNomeProduto(ponteiro.getString(1));
-                produto.setValorProduto(ponteiro.getDouble(2));
-                produto.setQuantidadeTotal(ponteiro.getInt(3));
-                produto.setQuantidadeMinima(ponteiro.getInt(4));
-
-                lista_produtos.add(produto);
-            }while (ponteiro.moveToNext());
-        }
+        lista_produtos = produto.buscarTodos();
 
         // Lista com os nomes dos produtos
         ArrayList<String> itens = new ArrayList<>();
 
-        for (Produtos item : lista_produtos)
+        for(Produtos item : lista_produtos)
         {
             itens.add(item.getCodProduto()+" >>> "+item.getNomeProduto());
         }

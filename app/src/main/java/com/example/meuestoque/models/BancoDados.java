@@ -91,15 +91,21 @@ public class BancoDados {
     // Executa uma query de pesquisa no banco de dados
     public Cursor buscarDados(String nome_tabela, String[] campos_tabela){
         abrirDB();
-        return db.query(
-                nome_tabela,
-                campos_tabela,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+        try{
+            return db.query(
+                    nome_tabela,
+                    campos_tabela,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+        }
+        catch (Exception ex){
+            Toast.makeText(act, "Erro ao buscar dados",Toast.LENGTH_SHORT).show();
+        }
+        return null;
     }
 }
