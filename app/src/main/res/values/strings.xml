@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Meu Estoque</string>
-    <string name="bnt_criarProduto">NOVO PRODUTO</string>
-    <string name="bnt_editarProduto">EDITAR PRODUTO</string>
+    <string name="btn_criarProduto">NOVO PRODUTO</string>
+    <string name="btn_editarProduto">EDITAR PRODUTO</string>
     <string name="btn_salvar">SALVAR</string>
+    <string name="btn_pesquisar">PESQUISAR</string>
     <string name="btn_editar">EDITAR</string>
     <string name="btn_deletar">DELETAR</string>
     <string name="btn_voltar">VOLTAR</string>
+    <string name="titulo_tela_novoProduto">NOVO PRODUTO</string>
+    <string name="titulo_tela_editarProduto">EDITAR PRODUTO</string>
     <string name="titulo_listaProduto">LISTA DE PRODUTOS</string>
+    <string name="titulo_listaEstoqueBaixo">ESTOQUE BAIXO</string>
     <string name="txt_nomeProduto">Nome do Produto:</string>
     <string name="txt_valorProduto">Valor do Produto:</string>
     <string name="txt_totalProduto">Quantidade Atual:</string>

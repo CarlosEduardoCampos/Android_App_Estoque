@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -19,20 +20,71 @@
             android:layout_marginBottom="40dp"
             android:backgroundTint="#56CF4D"
             android:onClick="abrirTelaCriar"
-            android:text="@string/bnt_criarProduto"
+            android:text="@string/btn_criarProduto"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tituloEstoqueBaixo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/titulo_listaEstoqueBaixo"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold|italic"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/lista_estoque_baixo"
+            style="@style/Widget.AppCompat.ListView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:visibility="gone">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/titulo_listaProduto"
             android:textAlignment="center"
             android:textSize="34sp"
             android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/et_pesquisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/btn_pesquisar"
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_pesquisar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_500"
+                android:text="@string/btn_pesquisar"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lista_produtos"
@@ -40,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
+            android:padding="10dp"
             android:scrollbarStyle="outsideOverlay" />
 
     </LinearLayout>

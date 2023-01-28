@@ -31,7 +31,7 @@ public class TelaCriar extends AppCompatActivity {
         et_minimProduto = findViewById(R.id.et_edit_minimProduto);
 
         //Button
-        btn_salvar = findViewById(R.id.btn_editar);
+        btn_salvar = findViewById(R.id.btn_salvar);
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
