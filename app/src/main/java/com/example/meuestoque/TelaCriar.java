@@ -43,14 +43,14 @@ public class TelaCriar extends AppCompatActivity {
 
     // Chama uma fução que cadastra um produto no banco de dados
     public void salvar(){
-        if(campoVazio()){
+        if(!campoVazio()){
             // setando valores ao produto
             produtos.setNomeProduto(et_nomeProduto.getText().toString().trim());
             produtos.setValorProduto(Double.parseDouble(et_valorPoduto.getText().toString().trim()));
             produtos.setQuantidadeTotal(Integer.parseInt(et_totalProduto.getText().toString().trim()));
             produtos.setQuantidadeMinima(Integer.parseInt(et_minimProduto.getText().toString().trim()));
 
-            // cadatra um novo produto
+            // cadastrar um novo produto
             produtos.inserir();
             limparTela();
             finalizarTela();
@@ -61,10 +61,10 @@ public class TelaCriar extends AppCompatActivity {
     }
 
     public boolean campoVazio(){
-        if(et_nomeProduto.getText().equals("")){return true;}
-        else if(et_valorPoduto.getText().equals("")){return true;}
-        else if(et_totalProduto.getText().equals("")){return true;}
-        else if(et_minimProduto.getText().equals("")){return true;}
+        if(et_nomeProduto.getText().toString().equals("")){return true;}
+        else if(et_valorPoduto.getText().toString().equals("")){return true;}
+        else if(et_totalProduto.getText().toString().equals("")){return true;}
+        else if(et_minimProduto.getText().toString().equals("")){return true;}
         else{return false;}
     }
 

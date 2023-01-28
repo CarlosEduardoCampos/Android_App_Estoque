@@ -48,7 +48,7 @@ public class TelaEditar extends AppCompatActivity {
 
     public void editarProduto(View v){
 
-        if(campoVazio()){
+        if(!campoVazio()){
             produto.setNomeProduto(et_nome.getText().toString().trim());
             produto.setValorProduto(Double.parseDouble(et_valor.getText().toString().trim()));
             produto.setQuantidadeTotal(Integer.parseInt(et_quantidadeTotoal.getText().toString().trim()));
@@ -67,10 +67,10 @@ public class TelaEditar extends AppCompatActivity {
     }
 
     public boolean campoVazio(){
-        if(et_nome.getText().equals("")){return true;}
-        else if (et_valor.getText().equals("")) {return true;}
-        else if (et_quantidadeTotoal.getText().equals("")) {return true;}
-        else if (et_quantidademinima.getText().equals("")) {return true;}
+        if(et_nome.getText().toString().equals("")){return true;}
+        else if (et_valor.getText().toString().equals("")) {return true;}
+        else if (et_quantidadeTotoal.getText().toString().equals("")) {return true;}
+        else if (et_quantidademinima.getText().toString().equals("")) {return true;}
         else {return false;}
     }
 
