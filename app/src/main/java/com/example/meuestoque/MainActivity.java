@@ -40,10 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Lista com os nomes dos produtos
         ArrayList<String> itens = new ArrayList<>();
-
-        for(Produtos item : lista_produtos)
-        {
-            itens.add(item.getCodProduto()+" >>> "+item.getNomeProduto());
+        if(lista_produtos.isEmpty()){
+            itens.add(" !!!!! Lista Vazia  !!!!!");
+        }
+        else{
+            for(Produtos item : lista_produtos)
+            {
+                itens.add(
+                        "Codigo >>> "+item.getCodProduto()+"\n"+
+                        "Nome   >>> "+item.getNomeProduto()+"\n"+
+                        "Total  >>> "+item.getQuantidadeTotal()+"\n"
+                );
+            }
         }
 
         // Refeencia logiaca ao elemento listView
@@ -63,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                abrirTelaEditar();
+                abrirTelaEditar(position);
             }
         });
     }
@@ -75,9 +83,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it_TelaCriar);
         this.finish();
     }
-    public void abrirTelaEditar(){
+    public void abrirTelaEditar(Integer position){
         Intent it_TelaEditar = new Intent(this, TelaEditar.class);
+
+        it_TelaEditar.putExtra("codi", lista_produtos.get(position).getCodProduto());
+        it_TelaEditar.putExtra("nome", lista_produtos.get(position).getNomeProduto());
+        it_TelaEditar.putExtra("valor", lista_produtos.get(position).getValorProduto());
+        it_TelaEditar.putExtra("total", lista_produtos.get(position).getQuantidadeTotal());
+        it_TelaEditar.putExtra("minimo", lista_produtos.get(position).getQuantidadeMinima());
+
         startActivity(it_TelaEditar);
+        this.finish();
+    }
+
+    // Volta para a tela anterior matando a tela atual
+    public void sairTela(View v){
+        Intent it_main = new Intent(this, MainActivity.class);
+        startActivity(it_main);
         this.finish();
     }
 }

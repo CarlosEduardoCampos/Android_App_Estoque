@@ -140,6 +140,7 @@ public class Produtos {
         try{
             bancoDados.deletar(
                     TITULO_TABELA,
+                    COLUNA_ID,
                     codProduto
             );
         }
@@ -158,20 +159,22 @@ public class Produtos {
     {
         try{
             ContentValues valores = new ContentValues();
-            valores.put(COLUNA_NOME, nomeProduto);
-            valores.put(COLUNA_VALOR, valorProduto);
-            valores.put(COLUNA_QUANTIDADE_TOTAL, quantidadeTotal);
+
             valores.put(COLUNA_QUANTIDADE_MINIMA, quantidadeMinima);
+            valores.put(COLUNA_QUANTIDADE_TOTAL, quantidadeTotal);
+            valores.put(COLUNA_VALOR, valorProduto);
+            valores.put(COLUNA_NOME, nomeProduto);
 
             bancoDados.editar(
                     codProduto,
                     TITULO_TABELA,
+                    COLUNA_ID,
                     valores
             );
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar deletar um contato" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar editar um contato" , ex);
         }
         finally {
             // Mensagem de sucesso

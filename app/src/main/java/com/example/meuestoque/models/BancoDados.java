@@ -33,15 +33,16 @@ public class BancoDados {
     }
 
     // Executa no banco de dados um update
-    public void editar(Integer id, String nome_tabela, ContentValues valores_tabela){
+    public void editar(Integer id, String nome_tabela, String nomeColunaID, ContentValues valores_tabela){
         abrirDB();
-        db.update(nome_tabela,valores_tabela,"id=?", new String[]{String.valueOf(id)});
+        db.update(nome_tabela,valores_tabela,nomeColunaID + "=?", new String[]{String.valueOf(id)});
+        fecharDB();
     }
 
     //Executa no banco de dados um delete
-    public void deletar(String nome_tabela, Integer id){
+    public void deletar(String nome_tabela, String nomeColunaID, Integer id){
         abrirDB();
-        db.delete(nome_tabela, "id=?", new String[]{String.valueOf(id)});
+        db.delete(nome_tabela, nomeColunaID + "=?", new String[]{String.valueOf(id)});
         fecharDB();
     }
 

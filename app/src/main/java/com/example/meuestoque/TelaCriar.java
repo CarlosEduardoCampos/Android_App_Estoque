@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.meuestoque.models.BancoDados;
+import com.example.meuestoque.models.CxMsg;
 import com.example.meuestoque.models.Produtos;
 
 public class TelaCriar extends AppCompatActivity {
@@ -32,22 +33,39 @@ public class TelaCriar extends AppCompatActivity {
         //Button
         btn_salvar = findViewById(R.id.btn_editar);
 
-        // Chama uma fução que cadastra um produto no banco de dados
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // setando valores ao produto
-                produtos.setNomeProduto(et_nomeProduto.getText().toString());
-                produtos.setValorProduto(Double.parseDouble(et_valorPoduto.getText().toString().trim()));
-                produtos.setQuantidadeTotal(Integer.parseInt(et_totalProduto.getText().toString().trim()));
-                produtos.setQuantidadeMinima(Integer.parseInt(et_minimProduto.getText().toString().trim()));
-
-                // cadatra um novo produto
-                produtos.inserir();
-                limparTela();
-                finalizarTela();
+                salvar();
             }
         });
+    }
+
+    // Chama uma fução que cadastra um produto no banco de dados
+    public void salvar(){
+        if(campoVazio()){
+            // setando valores ao produto
+            produtos.setNomeProduto(et_nomeProduto.getText().toString().trim());
+            produtos.setValorProduto(Double.parseDouble(et_valorPoduto.getText().toString().trim()));
+            produtos.setQuantidadeTotal(Integer.parseInt(et_totalProduto.getText().toString().trim()));
+            produtos.setQuantidadeMinima(Integer.parseInt(et_minimProduto.getText().toString().trim()));
+
+            // cadatra um novo produto
+            produtos.inserir();
+            limparTela();
+            finalizarTela();
+        }
+        else {
+            CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos");
+        }
+    }
+
+    public boolean campoVazio(){
+        if(et_nomeProduto.getText().equals("")){return true;}
+        else if(et_valorPoduto.getText().equals("")){return true;}
+        else if(et_totalProduto.getText().equals("")){return true;}
+        else if(et_minimProduto.getText().equals("")){return true;}
+        else{return false;}
     }
 
     // Apaga as informações digitadas
@@ -56,6 +74,10 @@ public class TelaCriar extends AppCompatActivity {
         et_valorPoduto.setText("");
         et_totalProduto.setText("");
         et_minimProduto.setText("");
+    }
+
+    public void voltaTela(View v){
+        finalizarTela();
     }
 
     // Volta para a tela anterior matando a tela atual

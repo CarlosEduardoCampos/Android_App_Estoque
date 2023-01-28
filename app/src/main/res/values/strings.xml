@@ -5,6 +5,7 @@
     <string name="btn_salvar">SALVAR</string>
     <string name="btn_editar">EDITAR</string>
     <string name="btn_deletar">DELETAR</string>
+    <string name="btn_voltar">VOLTAR</string>
     <string name="titulo_listaProduto">LISTA DE PRODUTOS</string>
     <string name="txt_nomeProduto">Nome do Produto:</string>
     <string name="txt_valorProduto">Valor do Produto:</string>

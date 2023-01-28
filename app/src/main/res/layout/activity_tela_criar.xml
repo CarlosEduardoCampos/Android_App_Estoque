@@ -63,7 +63,7 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/txt_dig_preco"
-                android:inputType="number"
+                android:inputType="number|numberDecimal"
                 android:textSize="24sp" />
 
             <TextView
@@ -110,9 +110,23 @@
                 android:id="@+id/btn_editar"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="#56CF4D"
                 android:text="@string/btn_salvar"
-                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_voltar2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/purple_500"
+                android:onClick="voltaTela"
+                android:text="@string/btn_voltar"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -20,6 +20,7 @@
             android:backgroundTint="#56CF4D"
             android:onClick="abrirTelaCriar"
             android:text="@string/bnt_criarProduto"
+            android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:textStyle="bold" />
 
