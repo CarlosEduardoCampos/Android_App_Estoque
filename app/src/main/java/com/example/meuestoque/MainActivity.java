@@ -128,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it_TelaCriar);
         this.finish();
     }
+
+    public void abrirTelaSaida(View v)
+    {
+        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
+        Intent it_TelaCriar = new Intent(this, TelaCriar.class);
+        startActivity(it_TelaCriar);
+        this.finish();
+    }
     public void abrirTelaEditar(Integer position, ArrayList<Produtos> lista_produtos){
         Intent it_TelaEditar = new Intent(this, TelaEditar.class);
 

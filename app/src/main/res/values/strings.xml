@@ -3,10 +3,15 @@
     <string name="btn_criarProduto">NOVO PRODUTO</string>
     <string name="btn_editarProduto">EDITAR PRODUTO</string>
     <string name="btn_salvar">SALVAR</string>
+    <string name="btn_confirmar">CONFIRMAR</string>
+    <string name="btn_sair">SAIDA PRODUTO</string>
     <string name="btn_pesquisar">PESQUISAR</string>
     <string name="btn_editar">EDITAR</string>
     <string name="btn_deletar">DELETAR</string>
     <string name="btn_voltar">VOLTAR</string>
+    <string name="btn_fechar">FECHAR</string>
+    <string name="btn_finalizar">FINALIZAR</string>
+    <string name="titulo_tela_saidaProduto">SAIDA PRODUTO</string>
     <string name="titulo_tela_novoProduto">NOVO PRODUTO</string>
     <string name="titulo_tela_editarProduto">EDITAR PRODUTO</string>
     <string name="titulo_listaProduto">LISTA DE PRODUTOS</string>
@@ -15,6 +20,8 @@
     <string name="txt_valorProduto">Valor do Produto:</string>
     <string name="txt_totalProduto">Quantidade Atual:</string>
     <string name="txt_minimProduto">Quantidade Mininima:</string>
+    <string name="txt_codgoProduto">Codigo</string>
+    <string name="txt_saidaProduto">Saida</string>
     <string name="txt_dig_nome">Produto</string>
     <string name="txt_dig_preco">0.0</string>
     <string name="txt_dig_quat">0</string>
