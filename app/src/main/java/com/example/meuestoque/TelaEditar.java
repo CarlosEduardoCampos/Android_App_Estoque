@@ -31,8 +31,8 @@ public class TelaEditar extends AppCompatActivity {
             produto.setQuantidadeMinima(extras.getInt("minimo"));
         }
 
-        et_nome = findViewById(R.id.et_edit_nomeProduto);
-        et_valor = findViewById(R.id.et_edit_valorProduto);
+        et_nome = findViewById(R.id.et_saida_nomeProduto);
+        et_valor = findViewById(R.id.et_saida_valorProduto);
         et_quantidadeTotoal = findViewById(R.id.et_edit_totalProduto);
         et_quantidademinima = findViewById(R.id.et_edit_minimProduto);
 
@@ -66,7 +66,7 @@ public class TelaEditar extends AppCompatActivity {
         sairTela();
     }
 
-    public boolean campoVazio(){
+    private boolean campoVazio(){
         if(et_nome.getText().toString().equals("")){return true;}
         else if (et_valor.getText().toString().equals("")) {return true;}
         else if (et_quantidadeTotoal.getText().toString().equals("")) {return true;}

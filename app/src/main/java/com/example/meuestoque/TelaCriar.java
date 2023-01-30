@@ -25,8 +25,8 @@ public class TelaCriar extends AppCompatActivity {
 
         // Relaciona elementos da tela as variaveis
         //EditText -> elementos de imput de texto
-        et_nomeProduto = findViewById(R.id.et_edit_nomeProduto);
-        et_valorPoduto = findViewById(R.id.et_edit_valorProduto);
+        et_nomeProduto = findViewById(R.id.et_saida_nomeProduto);
+        et_valorPoduto = findViewById(R.id.et_saida_valorProduto);
         et_totalProduto = findViewById(R.id.et_edit_totalProduto);
         et_minimProduto = findViewById(R.id.et_edit_minimProduto);
 
@@ -53,14 +53,13 @@ public class TelaCriar extends AppCompatActivity {
             // cadastrar um novo produto
             produtos.inserir();
             limparTela();
-            finalizarTela();
         }
         else {
             CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos");
         }
     }
 
-    public boolean campoVazio(){
+    private boolean campoVazio(){
         if(et_nomeProduto.getText().toString().equals("")){return true;}
         else if(et_valorPoduto.getText().toString().equals("")){return true;}
         else if(et_totalProduto.getText().toString().equals("")){return true;}

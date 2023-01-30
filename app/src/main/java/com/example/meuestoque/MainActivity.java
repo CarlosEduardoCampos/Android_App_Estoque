@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else{
-            CxMsg.erroHumano(this, "O campo deve ser preenchido");
+            CxMsg.erroHumano(this, "O campo deve estar preenchido");
             atualizarListaProdutos(lista_produtos);
         }
         if(!itens.isEmpty()){
@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
     public void abrirTelaSaida(View v)
     {
         Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
-        Intent it_TelaCriar = new Intent(this, TelaCriar.class);
-        startActivity(it_TelaCriar);
+        Intent it_TelaSaida = new Intent(this, TelaSaida.class);
+        startActivity(it_TelaSaida);
         this.finish();
     }
     public void abrirTelaEditar(Integer position, ArrayList<Produtos> lista_produtos){

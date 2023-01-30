@@ -103,7 +103,7 @@ public class Produtos {
     public void inserir()
     {
         // Verifica se todos os campos estão preenchidos
-        if (nomeProduto.equals("") || valorProduto == 0) {
+        if (nomeProduto.equals("")) {
             CxMsg.erroHumano(activity, "Não e possivel realizar cadastro com capos vazios");
             return;
         }

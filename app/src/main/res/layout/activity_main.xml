@@ -32,7 +32,7 @@
             android:layout_height="70dp"
             android:layout_marginBottom="40dp"
             android:backgroundTint="@color/purple_500"
-            android:onClick="abrirTelaCriar"
+            android:onClick="abrirTelaSaida"
             android:text="@string/btn_sair"
             android:textColor="#FFFFFF"
             android:textSize="30sp"

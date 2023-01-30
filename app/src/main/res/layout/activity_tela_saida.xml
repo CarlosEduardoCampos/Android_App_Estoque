@@ -36,7 +36,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/et_edit_nomeProduto"
+                android:id="@+id/et_saida_nomeProduto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -56,7 +56,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/et_edit_valorProduto"
+                android:id="@+id/et_saida_valorProduto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -70,7 +70,9 @@
             <ListView
                 android:id="@+id/lista_pesquisar"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="150dp"
+                android:nestedScrollingEnabled="true"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_fechar"
@@ -78,11 +80,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="#BD0521"
-                android:onClick="deletarProduto"
+                android:onClick="fecharListaBusca"
                 android:text="@string/btn_fechar"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +123,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/et_codigo"
+                    android:id="@+id/et_saida_codigo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -133,7 +137,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/et_saida"
+                    android:id="@+id/et_saida_saida"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -158,6 +162,7 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="#56CF4D"
+                    android:onClick="confirmarProduto"
                     android:text="@string/btn_confirmar"
                     android:textColor="#FFFFFF"
                     android:textSize="30sp"
@@ -169,7 +174,7 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="@color/purple_500"
-                    android:onClick="voltaTela"
+                    android:onClick="buscarProduto"
                     android:text="@string/btn_pesquisar"
                     android:textColor="#FFFFFF"
                     android:textSize="30sp"
@@ -177,9 +182,10 @@
             </LinearLayout>
 
             <ListView
+                android:id="@+id/lista_saida"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginBottom="20dp" >
+                android:layout_marginBottom="20dp">
 
             </ListView>
 
@@ -189,8 +195,20 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="#BD0521"
-                android:onClick="deletarProduto"
+                android:onClick="finalizar"
                 android:text="@string/btn_finalizar"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_voltar2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/purple_500"
+                android:onClick="voltaTela"
+                android:text="@string/btn_voltar"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold" />
