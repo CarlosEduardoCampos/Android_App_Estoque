@@ -185,7 +185,8 @@
                 android:id="@+id/lista_saida"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:nestedScrollingEnabled="true">
 
             </ListView>
 

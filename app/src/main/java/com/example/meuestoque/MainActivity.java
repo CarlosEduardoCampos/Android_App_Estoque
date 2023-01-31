@@ -41,35 +41,36 @@ public class MainActivity extends AppCompatActivity {
         //produto.deletarTabela();
         produto.criarTabela();
 
-        //busca produtos no banco
-        lista_produtos = produto.buscarTodos();
-
-        // Refeencia logiaca ao elemento listView
+        // Refeencia logiaca de elemetos da tela as variaveis
         listaProdutos = findViewById(R.id.lista_produtos);
         listaEstoqueBaixo = findViewById(R.id.lista_estoque_baixo);
         titulo_estoque_baixo = findViewById(R.id.tituloEstoqueBaixo);
-
         et_pesquisar = findViewById(R.id.et_pesquisa);
         btn_pesquisar = findViewById(R.id.btn_pesquisar);
 
-        atualizarListaProdutos(lista_produtos);
-
-        // Caso o usuario selecione algum item exibe uma mensagem OBS: substituir por tela editar
-        listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // Evento de click relacionado aos itens da lista de produtos
+        listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
                 if(!lista_produtos.isEmpty()){ abrirTelaEditar(position, lista_produtos); }
             }
         });
 
-        listaEstoqueBaixo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // Evento de click relacionado aos itens da lista de produtos em estoque baixo
+        listaEstoqueBaixo.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(!lista_estoque_baixo.isEmpty()){ abrirTelaEditar(position, lista_estoque_baixo); }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                if(!lista_estoque_baixo.isEmpty()){abrirTelaEditar(position, lista_estoque_baixo);}
             }
         });
 
-        btn_pesquisar.setOnClickListener(new View.OnClickListener() {
+        // Evento de click relacionado ao botão pesquisar
+        btn_pesquisar.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 buscarPodutos();
@@ -77,12 +78,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Realiza uma pesquisa na lista de produtos, procurando a informação digitada
     public void buscarPodutos(){
         ArrayList<Produtos> itens = new ArrayList<>();
         String pesquisa = et_pesquisar.getText().toString().trim();
 
+        // Ferifica se o campo de pesquisa foi preenchido
         if(!pesquisa.equals(""))
         {
+            // Relaciona as informações passadas a um ou mais produtos da lista
             for(Produtos item: lista_produtos){
                 if(item.getNomeProduto().contains(pesquisa)){
                     itens.add(item);
@@ -93,27 +97,39 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else{
-            CxMsg.erroHumano(this, "O campo deve estar preenchido");
+            CxMsg.erroHumano(this, "O campo de pesquisa esta vazio");
             atualizarListaProdutos(lista_produtos);
         }
+
+        // Testa se existem produtos cadastrado na lista itens
         if(!itens.isEmpty()){
             atualizarListaProdutos(itens);
         }
         else{
-            Toast.makeText(this, "Esses produtos não forão emcontrados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                this,
+                "Não foi encontrado nem um produto relacionado",
+                Toast.LENGTH_LONG
+            ).show();
         }
     }
 
+    // Abastece a lista relacionada aos intens que a quantidade em estoque esteja abaixo que
+    // a quntidade minima passada
     public void criaEstoqueBaixo(ArrayList<Produtos> lista_produtos){
+        // limpa os dados antigos da lista de produtos em estoque baixa
+        lista_estoque_baixo.clear();
 
+        // Ferifica se um produto da lista esta com uma quantidade abaixo da minima
         for(Produtos item: lista_produtos){
             boolean teste = item.getQuantidadeTotal() < item.getQuantidadeMinima();
-
             if(teste) {
+                // cadastra no estoque baixo um produto
                 lista_estoque_baixo.add(item);
             }
         }
 
+        // Testa se existem produtos com estoque baixo e mostra a lista
         if(!lista_estoque_baixo.isEmpty()){
             atualizarListaEstoqueBaixo(lista_estoque_baixo);
             titulo_estoque_baixo.setVisibility(View.VISIBLE);
@@ -121,21 +137,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void abrirTelaCriar(View v)
-    {
-        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
-        Intent it_TelaCriar = new Intent(this, TelaCriar.class);
-        startActivity(it_TelaCriar);
-        this.finish();
-    }
-
-    public void abrirTelaSaida(View v)
-    {
-        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
-        Intent it_TelaSaida = new Intent(this, TelaSaida.class);
-        startActivity(it_TelaSaida);
-        this.finish();
-    }
+    // Cria uma intent e passa as informaçõe de um produto localizado na lista
     public void abrirTelaEditar(Integer position, ArrayList<Produtos> lista_produtos){
         Intent it_TelaEditar = new Intent(this, TelaEditar.class);
 
@@ -146,11 +148,31 @@ public class MainActivity extends AppCompatActivity {
         it_TelaEditar.putExtra("minimo", lista_produtos.get(position).getQuantidadeMinima());
 
         startActivity(it_TelaEditar);
-        this.finish();
     }
 
+    /////////////////////////////////////////////////////////////////////////
+    //                 Metodos relacionado aos botoes(onClick)             //
+    /////////////////////////////////////////////////////////////////////////
+
+    public void abrirTelaCriar(View v)
+    {
+        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
+        Intent it_TelaCriar = new Intent(this, TelaCriar.class);
+        startActivity(it_TelaCriar);
+    }
+
+    public void abrirTelaSaida(View v)
+    {
+        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
+        Intent it_TelaSaida = new Intent(this, TelaSaida.class);
+        startActivity(it_TelaSaida);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    //  Metodos que atualizam na tela as lista(estoque baixo e lista de produtos)  //
+    /////////////////////////////////////////////////////////////////////////////////
     public void atualizarListaProdutos(ArrayList<Produtos> lista_produtos){
-        // Lista com os nomes dos produtos
+        // Lista com os dados dos produtos
         ArrayList<String> itens = new ArrayList<>();
 
         if(lista_produtos.isEmpty()){
@@ -161,9 +183,9 @@ public class MainActivity extends AppCompatActivity {
             for(Produtos item : lista_produtos)
             {
                 itens.add(
-                        "Codigo >>> "+item.getCodProduto()+"\n"+
-                        "Nome   >>> "+item.getNomeProduto()+"\n"+
-                        "Total  >>> "+item.getQuantidadeTotal()+"\n"
+                    "Codigo >>> "+item.getCodProduto()+"\n"+
+                    "Nome   >>> "+item.getNomeProduto()+"\n"+
+                    "Total  >>> "+item.getQuantidadeTotal()+"\n"
                 );
             }
         }
@@ -179,32 +201,41 @@ public class MainActivity extends AppCompatActivity {
         listaProdutos.setAdapter(adapter);
     }
 
-    public void atualizarListaEstoqueBaixo(ArrayList<Produtos> lista_produtos){
-        // Lista com os nomes dos produtos
+    public void atualizarListaEstoqueBaixo(ArrayList<Produtos> lista){
+        // Lista com os dados dos produtos
         ArrayList<String> itens = new ArrayList<>();
 
-        if(lista_produtos.isEmpty()){
-            itens.add(" !!!!! Lista Vazia  !!!!!");
-        }
-        else{
-            for(Produtos item : lista_produtos)
+        // Caso a lista de estoque baixo não seja vazia, este metodo atualiza na tela
+        if(!lista.isEmpty()){
+            for(Produtos item : lista)
             {
                 itens.add(
-                        "Codigo >>> "+item.getCodProduto()+"\n"+
-                                "Nome   >>> "+item.getNomeProduto()+"\n"+
-                                "Total  >>> "+item.getQuantidadeTotal()+"\n"
+                    "Codigo >>> "+item.getCodProduto()+"\n"+
+                    "Nome   >>> "+item.getNomeProduto()+"\n"+
+                    "Total  >>> "+item.getQuantidadeTotal()+"\n"
                 );
             }
+
+            // Prepara lista de produtos para ser mostrada na tela
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_expandable_list_item_1,
+                    itens
+            );
+
+            // Mostra a lista de produtos na tela
+            listaEstoqueBaixo.setAdapter(adapter);
         }
+    }
 
-        // Prepara lista de produtos para ser mostrada na tela
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_expandable_list_item_1,
-                itens
-        );
+    // Atualiza as lista sempre que a tela estiver no estado Star
+    public void onStart(){
+        super.onStart();
 
-        // Mostra a lista de produtos na tela
-        listaEstoqueBaixo.setAdapter(adapter);
+        //busca todos os produtos no banco
+        lista_produtos = produto.buscarTodos();
+
+        // Atualiza as listas da tela
+        atualizarListaProdutos(lista_produtos);
     }
 }

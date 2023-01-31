@@ -20,10 +20,14 @@ public class TelaEditar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_editar);
 
+        // Recebe asinformações do produto enviado pela MainActivity
         Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            CxMsg.erro(this, "Não foi passado um id do produto");
-        } else {
+        if(extras == null)
+        {
+            CxMsg.erro(this, "As informações do produto não foram encontradas");
+        }
+        else {
+
             produto.setCodProduto(extras.getInt("codi"));
             produto.setNomeProduto(extras.getString("nome"));
             produto.setValorProduto(extras.getDouble("valor"));
@@ -31,14 +35,21 @@ public class TelaEditar extends AppCompatActivity {
             produto.setQuantidadeMinima(extras.getInt("minimo"));
         }
 
+        // Faz uma referencia logica entre os elementos na tela e as variaveis
         et_nome = findViewById(R.id.et_saida_nomeProduto);
         et_valor = findViewById(R.id.et_saida_valorProduto);
         et_quantidadeTotoal = findViewById(R.id.et_edit_totalProduto);
         et_quantidademinima = findViewById(R.id.et_edit_minimProduto);
 
+        // Mostrta o produto recebido
         mostraDados();
     }
 
+    /////////////////////////////////////////////////////////////////////////
+    //  Metodos de verificação e preenchimento dos campos digitaveis       //
+    /////////////////////////////////////////////////////////////////////////
+
+    // Preenche os campos de digitação com os valores em produto
     public void mostraDados(){
         et_nome.setText(produto.getNomeProduto());
         et_valor.setText(String.valueOf(produto.getValorProduto()));
@@ -46,6 +57,28 @@ public class TelaEditar extends AppCompatActivity {
         et_quantidademinima.setText(String.valueOf(produto.getQuantidadeMinima()));
     }
 
+    // Preenche todos os campos com uma string vazia ""
+    public void limparDados(){
+        et_nome.setText("");
+        et_valor.setText("");
+        et_quantidadeTotoal.setText("");
+        et_quantidademinima.setText("");
+    }
+
+    // Verifica se todos os campos foram preenchido se não retorna false
+    private boolean campoVazio(){
+        if(et_nome.getText().toString().equals("")){return true;}
+        else if (et_valor.getText().toString().equals("")) {return true;}
+        else if (et_quantidadeTotoal.getText().toString().equals("")) {return true;}
+        else if (et_quantidademinima.getText().toString().equals("")) {return true;}
+        else {return false;}
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+    //                 Metodos relacionado aos botoes(onClick)             //
+    /////////////////////////////////////////////////////////////////////////
+
+    // Chama um metodo de produto que realisa um update no banco de dados
     public void editarProduto(View v){
 
         if(!campoVazio()){
@@ -61,27 +94,12 @@ public class TelaEditar extends AppCompatActivity {
         }
     }
 
+    // Chama um metodo de produto que executa um delete no banco
     public void deletarProduto(View v){
         produto.deletar();
-        sairTela();
-    }
-
-    private boolean campoVazio(){
-        if(et_nome.getText().toString().equals("")){return true;}
-        else if (et_valor.getText().toString().equals("")) {return true;}
-        else if (et_quantidadeTotoal.getText().toString().equals("")) {return true;}
-        else if (et_quantidademinima.getText().toString().equals("")) {return true;}
-        else {return false;}
-    }
-
-    public void voltaTela(View v){
-        sairTela();
+        limparDados();
     }
 
     // Volta para a tela anterior matando a tela atual
-    public void sairTela(){
-        Intent it_main = new Intent(this, MainActivity.class);
-        startActivity(it_main);
-        this.finish();
-    }
+    public void voltaTela(View v){ this.finish(); }
 }
