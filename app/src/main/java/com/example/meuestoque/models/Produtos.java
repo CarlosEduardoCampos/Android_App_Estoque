@@ -178,7 +178,7 @@ public class Produtos {
         }
         finally {
             // Mensagem de sucesso
-            Toast.makeText(activity,"Contato deletado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Contato editado com sucesso",Toast.LENGTH_SHORT).show();
         }
     }
 

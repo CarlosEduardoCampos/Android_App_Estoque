@@ -98,6 +98,7 @@ public class TelaEditar extends AppCompatActivity {
     public void deletarProduto(View v){
         produto.deletar();
         limparDados();
+        this.finish();
     }
 
     // Volta para a tela anterior matando a tela atual

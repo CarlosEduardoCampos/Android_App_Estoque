@@ -135,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
             titulo_estoque_baixo.setVisibility(View.VISIBLE);
             listaEstoqueBaixo.setVisibility(View.VISIBLE);
         }
+        else{
+            listaEstoqueBaixo.setVisibility(View.GONE);
+            titulo_estoque_baixo.setVisibility(View.GONE);
+        }
     }
 
     // Cria uma intent e passa as informaçõe de um produto localizado na lista
