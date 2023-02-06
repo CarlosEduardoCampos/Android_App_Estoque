@@ -206,6 +206,9 @@ public class TelaSaida extends AppCompatActivity {
                 atualizarListaBuscar(lista_busca);
             }
         }
+        else{
+            Toast.makeText(this, "Esse produto não exite", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
