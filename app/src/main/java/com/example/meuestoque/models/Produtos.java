@@ -182,6 +182,32 @@ public class Produtos {
         }
     }
 
+    // Edita o campo de quantidade total do produto no banco de dados
+    public void editarTotal()
+    {
+        try{
+            ContentValues valores = new ContentValues();
+
+
+            valores.put(COLUNA_QUANTIDADE_TOTAL, quantidadeTotal);
+
+            bancoDados.editar(
+                    codProduto,
+                    TITULO_TABELA,
+                    COLUNA_ID,
+                    valores
+            );
+        }
+        catch (Exception ex){
+            // Mensagem de Erro
+            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto" , ex);
+        }
+        finally {
+            // Mensagem de sucesso
+            Toast.makeText(activity,"Produto editado com sucesso",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     // Realiza uma busca de todos os produtos no banco de dados
     public ArrayList<Produtos> buscarTodos(){
         bancoDados.abrirDB();

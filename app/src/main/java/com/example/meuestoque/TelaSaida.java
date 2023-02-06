@@ -219,7 +219,7 @@ public class TelaSaida extends AppCompatActivity {
         }
         else{
             for(Produtos p: lista_saida){
-                p.editar();
+                p.editarTotal();
             }
 
             lista_saida.clear();

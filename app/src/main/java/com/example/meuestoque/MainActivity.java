@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String pastaPDF = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
-        String caminhoPDF = pastaPDF + "Estoque" + dataFomatada + ".pdf";
+        String caminhoPDF = pastaPDF + "/Estoque" + dataFomatada + ".pdf";
 
         try{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
