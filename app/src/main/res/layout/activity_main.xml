@@ -12,31 +12,48 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_criar"
-            style="@style/Widget.AppCompat.Button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#56CF4D"
-            android:onClick="abrirTelaCriar"
-            android:text="@string/btn_criarProduto"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_sair"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="40dp"
-            android:backgroundTint="@color/purple_500"
-            android:onClick="abrirTelaSaida"
-            android:text="@string/btn_sair"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_criar"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="#56CF4D"
+                android:onClick="abrirTelaCriar"
+                android:text="@string/btn_criarProduto"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_sair"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/purple_500"
+                android:onClick="abrirTelaSaida"
+                android:text="@string/btn_sair"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_pdf"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:onClick="criarPDF"
+                android:text="@string/btn_pdf"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tituloEstoqueBaixo"

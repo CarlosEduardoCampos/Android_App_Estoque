@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.meuestoque.models.BancoDados;
 import com.example.meuestoque.models.CxMsg;
 import com.example.meuestoque.models.Produtos;
@@ -21,7 +23,6 @@ public class TelaSaida extends AppCompatActivity {
     private ArrayList<Produtos> lista_produtos = new ArrayList<>();
     private final ArrayList<Produtos> lista_saida = new ArrayList<>();
     private ArrayList<Produtos> lista_busca = new ArrayList<>();
-
     private final BancoDados db = new BancoDados(this);
     private final Produtos produto = new Produtos(this, db);
     @Override
@@ -154,25 +155,29 @@ public class TelaSaida extends AppCompatActivity {
                 break;
 
                 case 1:// produto e cadastrado na lista de saida
-                    int estoque_velho = lista_busca.get(0).getQuantidadeTotal();
-                    int estoque_saida = Integer.parseInt(et_saida.getText().toString().trim());
+                    if(!testeLista(lista_busca.get(0), lista_saida)) {
+                        int estoque_velho = lista_busca.get(0).getQuantidadeTotal();
+                        int estoque_saida = Integer.parseInt(et_saida.getText().toString().trim());
 
-                    if (estoque_velho < estoque_saida) {
-                        CxMsg.erroHumano(
-                            this,
-                            "Quantidade em estoque é "+ lista_busca.get(0).getQuantidadeTotal()
-                        );
-                        break;
+                        if (estoque_velho < estoque_saida) {
+                            CxMsg.erroHumano(
+                                    this,
+                                    "Quantidade em estoque é " + lista_busca.get(0).getQuantidadeTotal()
+                            );
+                            break;
+                        } else { // modifica o estoque com base na saida passada
+                            int estoque_novo = estoque_velho - estoque_saida;
+
+                            lista_busca.get(0).setQuantidadeTotal(estoque_novo);
+                            mostraDados(lista_busca.get(0));
+
+                            lista_saida.add(lista_busca.get(0));
+                            atualizarListaProdutos(lista_saida);
+                            limparTela();
+                        }
                     }
-                    else { // modifica o estoque com base na saida passada
-                        int estoque_novo = estoque_velho - estoque_saida;
-
-                        lista_busca.get(0).setQuantidadeTotal(estoque_novo);
-                        mostraDados(lista_busca.get(0));
-
-                        lista_saida.add(lista_busca.get(0));
-                        atualizarListaProdutos(lista_saida);
-                        limparTela();
+                    else{
+                        Toast.makeText(this, "A siada desse produto ja foi cadastrada",Toast.LENGTH_LONG).show();
                     }
                 break;
 
@@ -226,6 +231,14 @@ public class TelaSaida extends AppCompatActivity {
     //        Metodos que atualizam na tela as lista(busca e lista de saida)       //
     /////////////////////////////////////////////////////////////////////////////////
 
+    public boolean testeLista(Produtos p, ArrayList<Produtos> lista){
+        for(Produtos item: lista){
+            if(p.getCodProduto() == item.getCodProduto()) {
+                return true;
+            }
+        }
+        return false;
+    }
     public void atualizarListaProdutos(ArrayList<Produtos> lista_produtos){
         // Lista com os nomes dos produtos
         ArrayList<String> itens = new ArrayList<>();

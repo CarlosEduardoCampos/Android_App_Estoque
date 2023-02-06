@@ -4,19 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 
 public class CxMsg {
-    Activity act;
-    public CxMsg(Activity activity){
-        this.act = activity;
-    }
-
-    public void teste(String txt) {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(act);
-
-        alerta.setTitle("!!! Error de Execução !!!");
-        alerta.setMessage(txt);
-        alerta.setNeutralButton("OK", null);
-        alerta.show();
-    }
 
     // Mesagem padrão para erros(try/catch)
     public static void erro(Activity activity, String txt){

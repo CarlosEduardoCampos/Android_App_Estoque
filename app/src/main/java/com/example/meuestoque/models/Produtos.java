@@ -23,7 +23,7 @@ public class Produtos {
     private final String COLUNA_QUANTIDADE_MINIMA = "quantidadeMinima";
 
     // Variaveis
-    private  Integer codProduto; // Indetificador(unico)
+    protected Integer codProduto; // Indetificador(unico)
     protected String nomeProduto = "";
     protected Double valorProduto = 0.0;
     protected Integer quantidadeTotal = 0;
@@ -76,12 +76,12 @@ public class Produtos {
         this.quantidadeMinima = quantidadeMinima;
     }
 
-    // Apaga a tabela de contatos completamente
+    // Apaga a tabela de produtoss completamente
     public void deletarTabela(){
         bancoDados.deletarTabela(TITULO_TABELA);
     }
 
-    // Cria a tabela de Contatos
+    // Cria a tabela de Podutos
     public void criarTabela(){
         try {
             bancoDados.abrirTabela(
@@ -99,7 +99,7 @@ public class Produtos {
         }
     }
 
-    // Cadastra um nono contato na agenda
+    // Cadastra um nono produto na agenda
     public void inserir()
     {
         // Verifica se todos os campos estão preenchidos
@@ -108,7 +108,7 @@ public class Produtos {
             return;
         }
 
-        // Cadastra um contato no banco de dados
+        // Cadastra um produto no banco de dados
         try {
             bancoDados.inserir(
                     TITULO_TABELA + "(" +
@@ -126,11 +126,11 @@ public class Produtos {
         }
         catch (Exception ex) {
             // Mesagem de Erro
-            CxMsg.erroExecucao(activity, "Erro ao tentar cadastrar um novo contato", ex);
+            CxMsg.erroExecucao(activity, "Erro ao tentar cadastrar um novo produto", ex);
         }
         finally {
             // Mesagem de sucesso
-            Toast.makeText(activity, "Contato gravado com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Produto gravado com sucesso", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -146,15 +146,15 @@ public class Produtos {
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar deletar um contato" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar deletar um produto" , ex);
         }
         finally {
             // Mesagem de sucesso
-            Toast.makeText(activity,"Contato deletado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Produto deletado com sucesso",Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Edita o contato no banco de dados
+    // Edita o produto no banco de dados
     public void editar()
     {
         try{
@@ -174,15 +174,15 @@ public class Produtos {
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar editar um contato" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto" , ex);
         }
         finally {
             // Mensagem de sucesso
-            Toast.makeText(activity,"Contato editado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Produto editado com sucesso",Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Realiza uma busca de todos os contatos no banco de dados
+    // Realiza uma busca de todos os produtos no banco de dados
     public ArrayList<Produtos> buscarTodos(){
         bancoDados.abrirDB();
             ArrayList<Produtos> lista_produtos = new ArrayList<>();

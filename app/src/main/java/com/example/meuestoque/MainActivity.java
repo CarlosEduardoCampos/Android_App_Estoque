@@ -1,9 +1,11 @@
 package com.example.meuestoque;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.support.v7.app.AlertDialog;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +16,21 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.meuestoque.models.BancoDados;
 import com.example.meuestoque.models.CxMsg;
 import com.example.meuestoque.models.Produtos;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import android.os.Environment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -170,6 +181,56 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
         Intent it_TelaSaida = new Intent(this, TelaSaida.class);
         startActivity(it_TelaSaida);
+    }
+    public void criarPDF(View v){
+
+        // Cria um documento para gerar o pdf
+        PdfDocument document = new PdfDocument();
+
+        // Especifica detalhes da página
+        PdfDocument.PageInfo detalhes = new PdfDocument.PageInfo.Builder(595, 842, 1).create();
+
+        // Criar a primeira página
+        PdfDocument.Page novaPagina = document.startPage(detalhes);
+
+        Canvas canvas = novaPagina.getCanvas();
+
+        Paint corTxt = new Paint();
+        corTxt.setColor(Color.BLACK);
+
+        for(Produtos p: lista_produtos){
+            canvas.drawText(
+                "Codigo  >>> " + p.getCodProduto() + "\t" +
+                "Produto >>> " + p.getNomeProduto() + "\t" +
+                "Valor   >>> " + p.getValorProduto() + "\t"+
+                "Total   >>" + p.getQuantidadeTotal() + "\n"
+                , 105, 100, corTxt);
+        }
+
+        document.finishPage(novaPagina);
+        // busca qual a data e a hr atual
+        Calendar calendario = Calendar.getInstance();
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyy HH:mm:ss", Locale.getDefault());
+        String dataFomatada = formatoData.format(calendario.getTime());
+
+        // Criar o pdf na memoria
+
+
+        String pastaPDF = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
+        String caminhoPDF = pastaPDF + "Estoque" + dataFomatada + ".pdf";
+
+        try{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                document.writeTo(Files.newOutputStream(Paths.get(caminhoPDF)));
+            }
+            Toast.makeText(this, "PDF Criado com Sucesso ...", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e){
+            CxMsg.erroExecucao(this, "Erro", e);
+        }
+
+        // fecha o arquivo
+        document.close();
     }
 
     //////////////////////////////////////////////////////////////////////////////////

@@ -13,10 +13,10 @@ import com.example.meuestoque.models.Produtos;
 
 public class TelaCriar extends AppCompatActivity {
 
-    EditText et_nomeProduto, et_valorPoduto, et_totalProduto, et_minimProduto;
-    Button btn_salvar;
-    BancoDados db = new BancoDados(this);
-    Produtos produtos = new Produtos(this, db);
+    private EditText et_nomeProduto, et_valorPoduto, et_totalProduto, et_minimProduto;
+    private Button btn_salvar;
+    private BancoDados db = new BancoDados(this);
+    private Produtos produto = new Produtos(this, db);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +45,13 @@ public class TelaCriar extends AppCompatActivity {
     public void salvar(){
         if(!campoVazio()){
             // setando valores ao produto
-            produtos.setNomeProduto(et_nomeProduto.getText().toString().trim());
-            produtos.setValorProduto(Double.parseDouble(et_valorPoduto.getText().toString().trim()));
-            produtos.setQuantidadeTotal(Integer.parseInt(et_totalProduto.getText().toString().trim()));
-            produtos.setQuantidadeMinima(Integer.parseInt(et_minimProduto.getText().toString().trim()));
+            produto.setNomeProduto(et_nomeProduto.getText().toString().trim());
+            produto.setValorProduto(Double.parseDouble(et_valorPoduto.getText().toString().trim()));
+            produto.setQuantidadeTotal(Integer.parseInt(et_totalProduto.getText().toString().trim()));
+            produto.setQuantidadeMinima(Integer.parseInt(et_minimProduto.getText().toString().trim()));
 
             // cadastrar um novo produto
-            produtos.inserir();
+            produto.inserir();
             limparTela();
         }
         else {
@@ -75,12 +75,8 @@ public class TelaCriar extends AppCompatActivity {
         et_minimProduto.setText("");
     }
 
-    public void voltaTela(View v){
-        finalizarTela();
-    }
-
     // Volta para a tela anterior matando a tela atual
-    public void finalizarTela(){
+    public void voltaTela(View v){
         Intent it_main = new Intent(this, MainActivity.class);
         startActivity(it_main);
         this.finish();

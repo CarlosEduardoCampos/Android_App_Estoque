@@ -4,6 +4,7 @@
     <string name="btn_editarProduto">EDITAR PRODUTO</string>
     <string name="btn_salvar">SALVAR</string>
     <string name="btn_confirmar">CONFIRMAR</string>
+    <string name="btn_pdf">GERAR PDF</string>
     <string name="btn_sair">SAIDA PRODUTO</string>
     <string name="btn_pesquisar">PESQUISAR</string>
     <string name="btn_editar">EDITAR</string>

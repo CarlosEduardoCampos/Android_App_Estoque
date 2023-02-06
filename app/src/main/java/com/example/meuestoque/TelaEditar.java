@@ -11,7 +11,7 @@ import com.example.meuestoque.models.CxMsg;
 import com.example.meuestoque.models.Produtos;
 
 public class TelaEditar extends AppCompatActivity {
-    EditText et_nome, et_valor, et_quantidadeTotoal, et_quantidademinima;
+    private EditText et_nome, et_valor, et_quantidadeTotoal, et_quantidadeMinima;
     private final BancoDados db = new BancoDados(this);
     private final Produtos produto = new Produtos(this, db);
 
@@ -39,7 +39,7 @@ public class TelaEditar extends AppCompatActivity {
         et_nome = findViewById(R.id.et_saida_nomeProduto);
         et_valor = findViewById(R.id.et_saida_valorProduto);
         et_quantidadeTotoal = findViewById(R.id.et_edit_totalProduto);
-        et_quantidademinima = findViewById(R.id.et_edit_minimProduto);
+        et_quantidadeMinima = findViewById(R.id.et_edit_minimProduto);
 
         // Mostrta o produto recebido
         mostraDados();
@@ -54,7 +54,7 @@ public class TelaEditar extends AppCompatActivity {
         et_nome.setText(produto.getNomeProduto());
         et_valor.setText(String.valueOf(produto.getValorProduto()));
         et_quantidadeTotoal.setText(String.valueOf(produto.getQuantidadeTotal()));
-        et_quantidademinima.setText(String.valueOf(produto.getQuantidadeMinima()));
+        et_quantidadeMinima.setText(String.valueOf(produto.getQuantidadeMinima()));
     }
 
     // Preenche todos os campos com uma string vazia ""
@@ -62,7 +62,7 @@ public class TelaEditar extends AppCompatActivity {
         et_nome.setText("");
         et_valor.setText("");
         et_quantidadeTotoal.setText("");
-        et_quantidademinima.setText("");
+        et_quantidadeMinima.setText("");
     }
 
     // Verifica se todos os campos foram preenchido se não retorna false
@@ -70,7 +70,7 @@ public class TelaEditar extends AppCompatActivity {
         if(et_nome.getText().toString().equals("")){return true;}
         else if (et_valor.getText().toString().equals("")) {return true;}
         else if (et_quantidadeTotoal.getText().toString().equals("")) {return true;}
-        else if (et_quantidademinima.getText().toString().equals("")) {return true;}
+        else if (et_quantidadeMinima.getText().toString().equals("")) {return true;}
         else {return false;}
     }
 
@@ -85,7 +85,7 @@ public class TelaEditar extends AppCompatActivity {
             produto.setNomeProduto(et_nome.getText().toString().trim());
             produto.setValorProduto(Double.parseDouble(et_valor.getText().toString().trim()));
             produto.setQuantidadeTotal(Integer.parseInt(et_quantidadeTotoal.getText().toString().trim()));
-            produto.setQuantidadeMinima(Integer.parseInt(et_quantidademinima.getText().toString().trim()));
+            produto.setQuantidadeMinima(Integer.parseInt(et_quantidadeMinima.getText().toString().trim()));
 
             produto.editar();
         }
