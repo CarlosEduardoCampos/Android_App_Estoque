@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //produto.deletarTabela();
         produto.criarTabela();
 
-        // Refeencia logiaca de elemetos da tela as variaveis
+        // Refeencia logica de elemetos da tela as variaveis
         listaProdutos = findViewById(R.id.lista_produtos);
         listaEstoqueBaixo = findViewById(R.id.lista_estoque_baixo);
         titulo_estoque_baixo = findViewById(R.id.tituloEstoqueBaixo);
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                                 "Produto >>> " + p.getNomeProduto() + "\t" +
                                 "Valor   >>> " + p.getValorProduto() + "\t" +
                                 "Total   >>" + p.getQuantidadeTotal() + "\n"
-                        , 300, altura, corTxt);
+                        , 50, altura, corTxt);
 
                 altura += 100;
             }
