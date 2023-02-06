@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //produto.deletarTabela();
         produto.criarTabela();
 
-        // Refeencia logica de elemetos da tela as variaveis
+        // Refeencia logica de elemetos da tela as variaveis (vinculo de variavel com o componente)
         listaProdutos = findViewById(R.id.lista_produtos);
         listaEstoqueBaixo = findViewById(R.id.lista_estoque_baixo);
         titulo_estoque_baixo = findViewById(R.id.tituloEstoqueBaixo);
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btn_pesquisar = findViewById(R.id.btn_pesquisar);
 
         // Evento de click relacionado aos itens da lista de produtos
+        //Quando voce clica em cima do produto na lista de produtos normal
         listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Evento de click relacionado aos itens da lista de produtos em estoque baixo
+        //Quando voce clica em cima do produto na lista de produtos com baixo estoque
         listaEstoqueBaixo.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Testa se existem produtos cadastrado na lista itens
         if(!itens.isEmpty()){
+            //atualiza a lista de produtos mostrada na tela
             atualizarListaProdutos(itens);
         }
         else{
@@ -126,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Abastece a lista relacionada aos intens que a quantidade em estoque esteja abaixo que
-    // a quntidade minima passada
+    // a quantidade minima passada
     public void criaEstoqueBaixo(ArrayList<Produtos> lista_produtos){
         // limpa os dados antigos da lista de produtos em estoque baixa
         lista_estoque_baixo.clear();
 
-        // Ferifica se um produto da lista esta com uma quantidade abaixo da minima
+        // Verifica se um produto da lista esta com uma quantidade abaixo da minima
         for(Produtos item: lista_produtos){
             boolean teste = item.getQuantidadeTotal() < item.getQuantidadeMinima();
             if(teste) {
@@ -171,14 +174,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void abrirTelaCriar(View v)
     {
-        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
         Intent it_TelaCriar = new Intent(this, TelaCriar.class);
         startActivity(it_TelaCriar);
     }
 
     public void abrirTelaSaida(View v)
     {
-        Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Abrir nova tela", Toast.LENGTH_SHORT).show();
         Intent it_TelaSaida = new Intent(this, TelaSaida.class);
         startActivity(it_TelaSaida);
     }
