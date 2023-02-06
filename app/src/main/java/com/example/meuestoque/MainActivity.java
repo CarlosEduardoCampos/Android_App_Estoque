@@ -184,53 +184,62 @@ public class MainActivity extends AppCompatActivity {
     }
     public void criarPDF(View v){
 
-        // Cria um documento para gerar o pdf
-        PdfDocument document = new PdfDocument();
-
-        // Especifica detalhes da página
-        PdfDocument.PageInfo detalhes = new PdfDocument.PageInfo.Builder(595, 842, 1).create();
-
-        // Criar a primeira página
-        PdfDocument.Page novaPagina = document.startPage(detalhes);
-
-        Canvas canvas = novaPagina.getCanvas();
-
-        Paint corTxt = new Paint();
-        corTxt.setColor(Color.BLACK);
-
-        for(Produtos p: lista_produtos){
-            canvas.drawText(
-                "Codigo  >>> " + p.getCodProduto() + "\t" +
-                "Produto >>> " + p.getNomeProduto() + "\t" +
-                "Valor   >>> " + p.getValorProduto() + "\t"+
-                "Total   >>" + p.getQuantidadeTotal() + "\n"
-                , 105, 100, corTxt);
+        if(lista_produtos.isEmpty()){
+            CxMsg.erroHumano(this, "A lista esta vazia");
         }
+        else {
+            // Cria um documento para gerar o pdf
+            PdfDocument document = new PdfDocument();
 
-        document.finishPage(novaPagina);
-        // busca qual a data e a hr atual
-        Calendar calendario = Calendar.getInstance();
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyy HH:mm:ss", Locale.getDefault());
-        String dataFomatada = formatoData.format(calendario.getTime());
+            // Especifica detalhes da página
+            PdfDocument.PageInfo detalhes = new PdfDocument.PageInfo.Builder(595, 842, 1).create();
 
-        // Criar o pdf na memoria
+            // Criar a primeira página
+            PdfDocument.Page novaPagina = document.startPage(detalhes);
 
+            Canvas canvas = novaPagina.getCanvas();
 
-        String pastaPDF = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
-        String caminhoPDF = pastaPDF + "/Estoque" + dataFomatada + ".pdf";
+            Paint corTxt = new Paint();
+            corTxt.setColor(Color.BLACK);
 
-        try{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                document.writeTo(Files.newOutputStream(Paths.get(caminhoPDF)));
+            int altura = 100;
+            for (Produtos p : lista_produtos) {
+                canvas.drawText(
+                        "Codigo  >>> " + p.getCodProduto() + "\t" +
+                                "Produto >>> " + p.getNomeProduto() + "\t" +
+                                "Valor   >>> " + p.getValorProduto() + "\t" +
+                                "Total   >>" + p.getQuantidadeTotal() + "\n"
+                        , 300, altura, corTxt);
+
+                altura += 100;
             }
-            Toast.makeText(this, "PDF Criado com Sucesso ...", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e){
-            CxMsg.erroExecucao(this, "Erro", e);
+
+            document.finishPage(novaPagina);
+            // busca qual a data e a hr atual
+            Calendar calendario = Calendar.getInstance();
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyy HH:mm:ss", Locale.getDefault());
+            String dataFomatada = formatoData.format(calendario.getTime())
+                .replaceAll("-", "")
+                .replaceAll(" ", "")
+                .replaceAll(":","");
+
+            // Criar o pdf na memoria
+            String pastaPDF = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
+            String caminhoPDF = pastaPDF + "/Estoque" + dataFomatada + ".pdf";
+
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    document.writeTo(Files.newOutputStream(Paths.get(caminhoPDF)));
+                }
+                Toast.makeText(this, "PDF Criado com Sucesso ...", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                CxMsg.erroExecucao(this, "Erro", e);
+            }
+
+            // fecha o arquivo
+            document.close();
         }
 
-        // fecha o arquivo
-        document.close();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
