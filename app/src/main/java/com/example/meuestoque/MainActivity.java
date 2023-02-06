@@ -231,7 +231,8 @@ public class MainActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     document.writeTo(Files.newOutputStream(Paths.get(caminhoPDF)));
                 }
-                Toast.makeText(this, "PDF Criado com Sucesso ...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "PDF Criado com Sucesso!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "PDF Salvo em Documents.", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 CxMsg.erroExecucao(this, "Erro", e);
             }
