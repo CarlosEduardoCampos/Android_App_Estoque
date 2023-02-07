@@ -204,7 +204,7 @@ public class Produtos {
         }
         finally {
             // Mensagem de sucesso
-            Toast.makeText(activity,"Produto editado com sucesso!!!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Saida de produto com sucesso!!!",Toast.LENGTH_SHORT).show();
         }
     }
 

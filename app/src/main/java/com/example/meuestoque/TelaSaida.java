@@ -207,7 +207,7 @@ public class TelaSaida extends AppCompatActivity {
             }
         }
         else{
-            Toast.makeText(this, "Esse produto não exite", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Esse produto não existe", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -215,7 +215,7 @@ public class TelaSaida extends AppCompatActivity {
     // Chama um metodo de produto que relisa um update para cada produto na lista de saida
     public void finalizar(View v){
         if(lista_saida.isEmpty()){
-            CxMsg.erroHumano(this, "Produtos devem ser comfirmados antes. ");
+            CxMsg.erroHumano(this, "Produtos devem ser confirmados antes. ");
         }
         else{
             for(Produtos p: lista_saida){
