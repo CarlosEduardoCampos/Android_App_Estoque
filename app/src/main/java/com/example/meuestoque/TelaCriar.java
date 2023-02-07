@@ -55,7 +55,7 @@ public class TelaCriar extends AppCompatActivity {
             limparTela();
         }
         else {
-            CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos");
+            CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos.");
         }
     }
 

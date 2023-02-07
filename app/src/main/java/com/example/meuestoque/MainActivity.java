@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
     public void criarPDF(View v){
 
         if(lista_produtos.isEmpty()){
-            CxMsg.erroHumano(this, "A lista esta vazia");
+            CxMsg.erroHumano(this, "A lista esta vazia.");
         }
         else {
             // Cria um documento para gerar o pdf

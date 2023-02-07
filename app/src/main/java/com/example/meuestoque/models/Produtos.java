@@ -95,7 +95,7 @@ public class Produtos {
             );
         }
         catch (Exception ex){
-            CxMsg.erroExecucao(activity, "Erro ao tentar criar tabela", ex);
+            CxMsg.erroExecucao(activity, "Erro ao tentar criar tabela.", ex);
         }
     }
 
@@ -104,7 +104,7 @@ public class Produtos {
     {
         // Verifica se todos os campos estão preenchidos
         if (nomeProduto.equals("")) {
-            CxMsg.erroHumano(activity, "Não e possivel realizar cadastro com capos vazios");
+            CxMsg.erroHumano(activity, "Não e possivel realizar cadastro com campos vazios!");
             return;
         }
 
@@ -126,11 +126,11 @@ public class Produtos {
         }
         catch (Exception ex) {
             // Mesagem de Erro
-            CxMsg.erroExecucao(activity, "Erro ao tentar cadastrar um novo produto", ex);
+            CxMsg.erroExecucao(activity, "Erro ao tentar cadastrar um novo produto.", ex);
         }
         finally {
             // Mesagem de sucesso
-            Toast.makeText(activity, "Produto gravado com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Produto gravado com sucesso!!!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -146,11 +146,11 @@ public class Produtos {
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar deletar um produto" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar deletar um produto." , ex);
         }
         finally {
             // Mesagem de sucesso
-            Toast.makeText(activity,"Produto deletado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Produto deletado com sucesso.",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -174,11 +174,11 @@ public class Produtos {
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto." , ex);
         }
         finally {
             // Mensagem de sucesso
-            Toast.makeText(activity,"Produto editado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Produto editado com sucesso.",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -200,11 +200,11 @@ public class Produtos {
         }
         catch (Exception ex){
             // Mensagem de Erro
-            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto" , ex);
+            CxMsg.erroExecucao(activity,"Erro ao tentar editar um produto." , ex);
         }
         finally {
             // Mensagem de sucesso
-            Toast.makeText(activity,"Produto editado com sucesso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"Produto editado com sucesso!!!",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -249,7 +249,7 @@ public class Produtos {
                 }
             }
             else{
-                CxMsg.erro(activity, "Não foi encontrado nem um produto");
+                CxMsg.erro(activity, "Não foi encontrado nenhum produto.");
             }
         bancoDados.fecharDB();
         return lista_produtos;

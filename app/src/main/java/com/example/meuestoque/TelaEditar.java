@@ -24,7 +24,7 @@ public class TelaEditar extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras == null)
         {
-            CxMsg.erro(this, "As informações do produto não foram encontradas");
+            CxMsg.erro(this, "As informações do produto não foram encontradas!!!");
         }
         else {
 
@@ -90,7 +90,7 @@ public class TelaEditar extends AppCompatActivity {
             produto.editar();
         }
         else{
-            CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos");
+            CxMsg.erroHumano(this, "Todos os campos devem ser preenchidos!!!");
         }
     }
 

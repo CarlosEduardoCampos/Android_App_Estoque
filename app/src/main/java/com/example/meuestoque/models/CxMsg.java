@@ -29,7 +29,7 @@ public class CxMsg {
     public static void erroHumano(Activity activity, String txt){
         AlertDialog.Builder campo_alerta= new AlertDialog.Builder(activity);
 
-        campo_alerta.setTitle("!!! Erro Humano !!!");
+        campo_alerta.setTitle("!!! Error Humano !!!");
         campo_alerta.setMessage(txt);
         campo_alerta.show();
     }

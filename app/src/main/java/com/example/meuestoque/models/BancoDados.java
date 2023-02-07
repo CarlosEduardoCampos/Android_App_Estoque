@@ -27,7 +27,7 @@ public class BancoDados {
             fecharDB();
         }
         catch (Exception ex){
-            CxMsg.erroExecucao(act, "Erro ao cadastrar novo produto", ex);
+            CxMsg.erroExecucao(act, "Erro ao cadastrar novo produto.", ex);
         }
 
     }
@@ -53,7 +53,7 @@ public class BancoDados {
             db = cw.openOrCreateDatabase(BANCO_NOME, MODE_PRIVATE, null);
 
         }catch (Exception ex){
-            CxMsg.erroExecucao(act, "Erro ao tentar abrir ou cria o banco de dados", ex);
+            CxMsg.erroExecucao(act, "Erro ao tentar abrir ou criar o banco de dados", ex);
         }
     }
 
@@ -70,7 +70,7 @@ public class BancoDados {
             fecharDB();
         }
         catch (Exception ex){
-            CxMsg.erroExecucao(act, "Erro ao criar tabela", ex);
+            CxMsg.erroExecucao(act, "Erro ao criar tabela.", ex);
         }
     }
 
@@ -82,10 +82,10 @@ public class BancoDados {
             fecharDB();
         }
         catch (Exception ex){
-            CxMsg.erroExecucao(act,"Erro ao apagar a tabela", ex);
+            CxMsg.erroExecucao(act,"Erro ao apagar a tabela.", ex);
         }
         finally {
-            Toast.makeText(act, "Tabela "+ nome_tabela + "foi deletada", Toast.LENGTH_LONG).show();
+            Toast.makeText(act, "Tabela "+ nome_tabela + "foi deletada.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -105,7 +105,7 @@ public class BancoDados {
             );
         }
         catch (Exception ex){
-            Toast.makeText(act, "Erro ao buscar dados",Toast.LENGTH_SHORT).show();
+            Toast.makeText(act, "Erro ao buscar dados.",Toast.LENGTH_SHORT).show();
         }
         return null;
     }

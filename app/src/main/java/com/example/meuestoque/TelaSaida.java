@@ -109,7 +109,7 @@ public class TelaSaida extends AppCompatActivity {
             }
         }
         else{
-            CxMsg.erroHumano(this, "O campo nome ou codigo deve ser preenchido");
+            CxMsg.erroHumano(this, "O campo NOME ou CODIGO deve ser preenchido!!!");
             return itens;
         }
         return itens;
@@ -138,11 +138,11 @@ public class TelaSaida extends AppCompatActivity {
 
         // Testa se o campo de saida tem um valor valido
         if(txt_saida.equals("")) {
-            CxMsg.erroHumano(this, "Saida invalida");
+            CxMsg.erroHumano(this, "Saida invalida.");
         }
         else if (saida < 0)
         {
-            CxMsg.erroHumano(this, "Saida invalida");
+            CxMsg.erroHumano(this, "Saida invalida.");
         }
         else{
             lista_busca = buscar();
@@ -151,7 +151,7 @@ public class TelaSaida extends AppCompatActivity {
             switch(lista_busca.size())
             {
                 case 0:// Não forão encotrados produtos
-                    CxMsg.erro(this, "O produto indicado não existe");
+                    CxMsg.erro(this, "O produto indicado não existe.");
                 break;
 
                 case 1:// produto e cadastrado na lista de saida
@@ -177,7 +177,7 @@ public class TelaSaida extends AppCompatActivity {
                         }
                     }
                     else{
-                        Toast.makeText(this, "A siada desse produto ja foi cadastrada",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "A saida desse produto ja foi cadastrada.",Toast.LENGTH_LONG).show();
                     }
                 break;
 
@@ -215,7 +215,7 @@ public class TelaSaida extends AppCompatActivity {
     // Chama um metodo de produto que relisa um update para cada produto na lista de saida
     public void finalizar(View v){
         if(lista_saida.isEmpty()){
-            CxMsg.erroHumano(this, "Produtos devem ser comfirmados antes ");
+            CxMsg.erroHumano(this, "Produtos devem ser comfirmados antes. ");
         }
         else{
             for(Produtos p: lista_saida){
