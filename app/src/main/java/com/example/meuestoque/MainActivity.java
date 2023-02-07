@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,10 +44,17 @@ public class MainActivity extends AppCompatActivity {
     private final BancoDados db = new BancoDados(this);
     private final Produtos produto = new Produtos(this, db);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras == null){
+            Intent it_intro = new Intent(MainActivity.this,Intro.class);
+            startActivity(it_intro);
+        }
 
         //Inicia o Banco de dados
         //produto.deletarTabela();
@@ -209,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
             for (Produtos p : lista_produtos) {
                 canvas.drawText(
                         "Codigo  >>> " + p.getCodProduto() + "\t" +
-                                "Produto >>> " + p.getNomeProduto() + "\t" +
-                                "Valor   >>> " + p.getValorProduto() + "\t" +
-                                "Total   >>" + p.getQuantidadeTotal() + "\n"
+                        "Produto >>> " + p.getNomeProduto() + "\t" +
+                        "Valor   >>> " + p.getValorProduto() + "\t" +
+                        "Total   >>" + p.getQuantidadeTotal() + "\n"
                         , 50, altura, corTxt);
 
                 altura += 100;
