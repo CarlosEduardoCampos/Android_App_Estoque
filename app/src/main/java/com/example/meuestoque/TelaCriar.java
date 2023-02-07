@@ -77,8 +77,6 @@ public class TelaCriar extends AppCompatActivity {
 
     // Volta para a tela anterior matando a tela atual
     public void voltaTela(View v){
-        Intent it_main = new Intent(this, MainActivity.class);
-        startActivity(it_main);
         this.finish();
     }
 }
